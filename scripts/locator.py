@@ -282,9 +282,9 @@ def replace_md(genotypes):
 def filter_snps(genotypes):
     print("filtering SNPs")
     tmp=genotypes.count_alleles()
-    biallel=tmp.is_biallelic().compute()
+    biallel=tmp.is_biallelic()
     genotypes=genotypes[biallel,:,:]
-    genotypes = allel.GenotypeDaskArray(genotypes)
+    #genotypes = allel.GenotypeDaskArray(genotypes)
     if not args.min_mac==1:
         derived_counts=genotypes.count_alleles()[:,1]
         ac_filter=[x >= args.min_mac for x in derived_counts]
